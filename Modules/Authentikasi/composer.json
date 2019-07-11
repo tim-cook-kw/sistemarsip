@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/authentikasi",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Authentikasi\\Providers\\AuthentikasiServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Authentikasi\\": ""
+        }
+    }
+}
