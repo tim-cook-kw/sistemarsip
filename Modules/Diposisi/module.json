@@ -1,0 +1,14 @@
+{
+    "name": "Diposisi",
+    "alias": "diposisi",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Diposisi\\Providers\\DiposisiServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
