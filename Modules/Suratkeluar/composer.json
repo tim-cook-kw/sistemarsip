@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/suratkeluar",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Suratkeluar\\Providers\\SuratkeluarServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Suratkeluar\\": ""
+        }
+    }
+}

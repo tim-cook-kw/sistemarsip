@@ -1,0 +1,14 @@
+{
+    "name": "Suratkeluar",
+    "alias": "suratkeluar",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Suratkeluar\\Providers\\SuratkeluarServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

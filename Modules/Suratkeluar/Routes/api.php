@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/surat', function (Request $request) {
+Route::middleware('auth:api')->get('/suratkeluar', function (Request $request) {
     return $request->user();
 });
-Route::resource('suratmasuk','SuratApiController');
+Route::resource('suratkeluar','SuratKeluarApiController');

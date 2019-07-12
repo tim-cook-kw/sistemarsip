@@ -2,12 +2,12 @@
 @section('sectionheader')
 <section class="content-header">
         <h1>
-          Surat Masuk
-          <small>List Surat Masuk</small>
+          Surat Keluar
+          <small>List Surat Keluar</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-database"></i> Transaksi</a></li>
-          <li class="active">Surat Masuk</li>
+          <li class="active">Surat Keluar</li>
         </ol>
       </section>
 @endsection
@@ -24,9 +24,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Form Input Surat Masuk</h4>
+                    <h4 class="modal-title">Form Input Surat Keluar</h4>
                     </div>
-                    <form id="formsuratmasuk">
+                    <form id="formsuratkeluar">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -39,8 +39,8 @@
                                         <input class="form-control" name="no_surat" id="no_surat">
                                     </div>
                                     <div class="form-group">
-                                        <label>Asal Surat </label>
-                                        <input class="form-control" name="asal_surat" id="asal_surat">
+                                        <label>Tujuan </label>
+                                        <input class="form-control" name="tujuan" id="tujuan">
                                     </div>
                                     <div class="form-group">
                                         <label>Isi </label>
@@ -53,16 +53,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>indeks </label>
-                                        <input class="form-control" name="indeks" id="indeks">
+                                        <label>Tanggal Catat </label>
+                                        <input class="form-control" name="tgl_catat" id="tgl_catat" type="date">
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Surat </label>
                                         <input class="form-control" name="tgl_surat" id="tgl_surat" type="date">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tanggal Diterima </label>
-                                        <input class="form-control" name="tgl_diterima" id="tgl_diterima" type="date">
                                     </div>
                                     <div class="form-group">
                                         <label>File </label>
@@ -91,7 +87,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Form Ubah Surat Masuk</h4>
                     </div>
-                    <form id="formsuratedit">
+                    <form id="formsuratedit" method="POST">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -105,8 +101,8 @@
                                         <input class="form-control" name="no_suratedit" id="no_suratedit">
                                     </div>
                                     <div class="form-group">
-                                        <label>Asal Surat </label>
-                                        <input class="form-control" name="asal_suratedit" id="asal_suratedit">
+                                        <label>Tujuan </label>
+                                        <input class="form-control" name="tujuanedit" id="tujuanedit">
                                     </div>
                                     <div class="form-group">
                                         <label>Isi </label>
@@ -119,16 +115,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>indeks </label>
-                                        <input class="form-control" name="indeksedit" id="indeksedit">
+                                        <label>Tanggal Catat </label>
+                                        <input class="form-control" name="tgl_catatedit" id="tgl_catatedit" type="date">
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Surat </label>
                                         <input class="form-control" name="tgl_suratedit" id="tgl_suratedit" type="date">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tanggal Diterima </label>
-                                        <input class="form-control" name="tgl_diterimaedit" id="tgl_diterimaedit" type="date">
                                     </div>
                                     <div class="form-group">
                                         <label>File </label>
@@ -156,8 +148,8 @@
                     <th>Asal Surat</th>
                     <th>Isi</th>
                     <th>Kode</th>
-                    <th>tgl_surat</th>
-                    <th>tgl_diterima</th>
+                    <th>Tanggal Surat</th>
+                    <th>Tanggal Catat</th>
                     <th>File</th>
                     <th>Action</th>
                 </thead>
@@ -179,7 +171,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url:'/api/suratmasuk/'+id,
+                            url:'/api/suratkeluar/'+id,
                             type:'DELETE',
                             success:function(){
                                 Swal.fire(
@@ -196,18 +188,17 @@
         }
         function editfunc(id){
             $.ajax({
-                url:'/api/suratmasuk/'+id,
+                url:'/api/suratkeluar/'+id,
                 type:'GET',
                 success:function(data){
                     console.log(data);
                     $( '#no_agendaedit' ).val(data.no_agenda);
                     $( '#no_suratedit' ).val(data.no_surat);
-                    $( '#asal_suratedit' ).val(data.asal_surat);
+                    $( '#tujuanedit' ).val(data.tujuan);
                     $( '#isiedit' ).val(data.isi);
                     $( '#kodeedit' ).val(data.kode);
-                    $( '#indeksedit' ).val(data.indeks);
+                    $( '#tgl_catatedit' ).val(data.tgl_catat);
                     $( '#tgl_suratedit' ).val(data.tgl_surat);
-                    $( '#tgl_diterimaedit' ).val(data.tgl_diterima);
                     $( '#keteranganedit' ).val(data.keterangan);
                     $( '#idsurat' ).val(data.id_surat);
                 }
@@ -216,7 +207,7 @@
         var table =  $('#myTable').DataTable({
                         deferRender: true,
                         ajax: {
-                            url: "/api/suratmasuk",
+                            url: "/api/suratkeluar",
                             type: "GET",
                             dataSrc: function (d) {
                                 return d
@@ -225,11 +216,11 @@
                         columns: [
                             { data: 'no_agenda' },
                             { data: 'no_surat' },
-                            { data: 'asal_surat' },
+                            { data: 'tujuan' },
                             { data: 'isi' },
                             { data: 'kode' },
                             { data: 'tgl_surat' },
-                            { data: 'tgl_diterima' },
+                            { data: 'tgl_catat' },
                             {
                                 data: null,
                                 render: function ( data, type, row ) {
@@ -246,17 +237,16 @@
                     });
 $('document').ready(function(){
 
-        $('form[id="formsuratmasuk"]').validate({
+        $('form[id="formsuratkeluar"]').validate({
             rules: {
                 no_agenda: 'required',
                 no_surat: 'required',
-                asal_surat: 'required',
+                tujuan: 'required',
                 isi: 'required',
                 kode: 'required',
-                indeks: 'required',
+                tgl_catat: 'required',
                 tgl_surat: 'required',
                 filesurat: 'required',
-                tgl_diterima: 'required',
                 tgl_diterima: 'required',
                 keterangan: 'required',
 
@@ -270,16 +260,16 @@ $('document').ready(function(){
                 data = new FormData();
                 data.append( 'no_agenda', $( '#no_agenda' ).val());
                 data.append( 'no_surat', $( '#no_surat' ).val());
-                data.append( 'asal_surat', $( '#asal_surat' ).val());
+                data.append( 'tujuan', $( '#tujuan' ).val());
                 data.append( 'isi', $( '#isi' ).val());
                 data.append( 'kode', $( '#kode' ).val());
-                data.append( 'indeks', $( '#indeks' ).val());
+                data.append( 'tgl_catat', $( '#tgl_catat' ).val());
                 data.append( 'tgl_surat', $( '#tgl_surat' ).val());
                 data.append( 'tgl_diterima', $( '#tgl_diterima' ).val());
                 data.append( 'keterangan', $( '#keterangan' ).val());
                 data.append( 'filesurat', $( '#filesurat' )[0].files[0]);
                 $.ajax({
-                    url:'/api/suratmasuk',
+                    url:'/api/suratkeluar',
                     method:'POST',
                     data:data,
                     contentType: false,
@@ -310,10 +300,10 @@ $('document').ready(function(){
             rules: {
                 no_agendaedit: 'required',
                 no_suratedit: 'required',
-                asal_suratedit: 'required',
+                tujuanedit: 'required',
                 isiedit: 'required',
                 kodeedit: 'required',
-                indeksedit: 'required',
+                tgl_catatedit: 'required',
                 tgl_suratedit: 'required',
                 filesuratedit: 'required',
                 tgl_diterimaedit: 'required',
@@ -332,16 +322,15 @@ $('document').ready(function(){
                 data.append('_method', 'PUT');
                 data.append( 'no_agenda', $( '#no_agendaedit' ).val());
                 data.append( 'no_surat', $( '#no_suratedit' ).val());
-                data.append( 'asal_surat', $( '#asal_suratedit' ).val());
+                data.append( 'tujuan', $( '#tujuanedit' ).val());
                 data.append( 'isi', $( '#isiedit' ).val());
                 data.append( 'kode', $( '#kodeedit' ).val());
-                data.append( 'indeks', $( '#indeksedit' ).val());
+                data.append( 'tgl_catat', $( '#tgl_catatedit' ).val());
                 data.append( 'tgl_surat', $( '#tgl_suratedit' ).val());
-                data.append( 'tgl_diterima', $( '#tgl_diterimaedit' ).val());
                 data.append( 'keterangan', $( '#keteranganedit' ).val());
                 data.append( 'filesurat', $( '#filesuratedit' )[0].files[0]);
                 $.ajax({
-                    url:'/api/suratmasuk/'+id,
+                    url:'/api/suratkeluar/'+id,
                     method:'POST',
                     data:data,
                     contentType: false,
@@ -354,12 +343,11 @@ $('document').ready(function(){
                             ).then(function(){
                                 $( '#no_agendaedit' ).val('');
                                 $( '#no_suratedit' ).val('');
-                                $( '#asal_suratedit' ).val('');
+                                $( '#tujuanedit' ).val('');
                                 $( '#isiedit' ).val('');
                                 $( '#kodeedit' ).val('');
-                                $( '#indeksedit' ).val('');
+                                $( '#tgl_catatedit' ).val('');
                                 $( '#tgl_suratedit' ).val('');
-                                $( '#tgl_diterimaedit' ).val('');
                                 $( '#keteranganedit' ).val('');
                                 $('#modals2').modal('toggle');
                             })

@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('suratmasuk')->group(function() {
-    Route::get('/', 'SuratController@index')->name('suratmasuk.index');
+Route::prefix('suratkeluar')->group(function() {
+    Route::get('/', 'SuratkeluarController@index')->name('suratkeluar.index');
 });
