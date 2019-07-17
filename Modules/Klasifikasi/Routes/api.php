@@ -13,8 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/surat', function (Request $request) {
+Route::middleware('auth:api')->get('/klasifikasi', function (Request $request) {
     return $request->user();
 });
-Route::resource('suratmasuk','SuratApiController');
-Route::post('suratmasuk/changedisposisi','SuratApiController@disposisi');
+Route::resource('klasifikasi','KlasifikasiApiController');

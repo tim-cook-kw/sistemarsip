@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\Surat\Entities\SuratModel;
+use Modules\Surat\Entities\DisposisiModel;
 class SuratApiController extends Controller
 {
     /**
@@ -122,5 +123,21 @@ class SuratApiController extends Controller
     {
         $suratObject = SuratModel::find($id);
         $suratObject->delete();
+    }
+    public function disposisi(Request $request){
+        $diposisiObject = new DisposisiModel();
+        $diposisiObject->tujuan = $request->tujuan;
+        $diposisiObject->isi_disposisi = $request->isi_disposisi;
+        $diposisiObject->sifat = $request->sifat;
+        $diposisiObject->batas_waktu = $request->batas_waktu;
+        $diposisiObject->catatan = $request->catatan;
+        $diposisiObject->id_surat = $request->id_surat;
+        $diposisiObject->id_user = '1';
+        $diposisiObject->save();
+        
+    }
+    public function showdisposisi($id){
+        $diposisiObject = DisposisiModel::find($id);
+        return $diposisiObject;
     }
 }

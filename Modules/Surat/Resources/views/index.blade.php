@@ -83,6 +83,46 @@
                 </div>
                 </div>
             </div>
+            <div id="modals3" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Form Input Disposisi</h4>
+                    </div>
+                    <form id="formdisposisi">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Tujuan</label>
+                                <input class="form-control" name="tujuan" id="tujuan">
+                                <input type="hidden" id="idsurat">
+                            </div>
+                            <div class="form-group">
+                                <label>Isi Disposisi</label>
+                                <textarea class="form-control" name="isi_disposisi" id="isi_disposisi"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Sifat </label>
+                                <input class="form-control" name="sifat" id="sifat">
+                            </div>
+                            <div class="form-group">
+                                <label>Batas Waktu </label>
+                                <input class="form-control" name="batas_waktu" id="batas_waktu" type="date">
+                            </div>
+                            <div class="form-group">
+                                <label>Catatan</label>
+                                <textarea class="form-control" name="catatan" id="catatan"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i> Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
             <div id="modals2" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg">
                 <!-- Modal content-->
@@ -194,6 +234,9 @@
                 })
           
         }
+        function disposisi(id){
+           $('#idsurat').val(id);
+        }
         function editfunc(id){
             $.ajax({
                 url:'/api/suratmasuk/'+id,
@@ -239,7 +282,7 @@
                             {
                                 data: null,
                                 render: function ( data, type, row ) {
-                                    return "<button class='btn btn-primary' data-toggle='modal' data-target='#modals2'onclick='editfunc("+data.id_surat+")'>Edit</button> <button class='btn btn-danger' onclick='myfunc("+data.id_surat+")'>Delete</button>";
+                                    return "<button class='btn btn-warning' data-toggle='modal' data-target='#modals3'onclick='disposisi("+data.id_surat+")'>Disposisi</button> <button class='btn btn-primary' data-toggle='modal' data-target='#modals2'onclick='editfunc("+data.id_surat+")'>Edit</button> <button class='btn btn-danger' onclick='myfunc("+data.id_surat+")'>Delete</button>";
                                 }
                             }
                         ]
@@ -306,6 +349,52 @@ $('document').ready(function(){
                 })
             }
         });
+        $('form[id="formdisposisi"]').validate({
+            rules: {
+                tujuan: 'required',
+                isi_disposisi: 'required',
+                sifat: 'required',
+                catatan:'required',
+                batas_waktu: 'required',
+
+            },
+            messages: {
+                judul: 'This field is required',
+
+            },
+            submitHandler: function(form) {
+                var data;
+                data = new FormData();
+                data.append( 'tujuan', $( '#tujuan' ).val());
+                data.append( 'isi_disposisi', $( '#isi_disposisi' ).val());
+                data.append( 'sifat', $( '#sifat' ).val());
+                data.append( 'batas_waktu', $( '#batas_waktu' ).val());
+                data.append( 'catatan', $( '#catatan' ).val());
+                data.append( 'id_surat', $( '#idsurat' ).val());
+                $.ajax({
+                    url:'/api/suratmasuk/changedisposisi',
+                    method:'POST',
+                    data:data,
+                    contentType: false,
+                    processData:false,
+                    success:function(){
+                        Swal.fire(
+                                'Sukses!',
+                                'Data Sukses di simpan!',
+                                'success'
+                            ).then(function(){
+                                $( '#tujuan' ).val('');
+                                $( '#isi_disposisi' ).val('');
+                                $( '#sifat' ).val('');
+                                $( '#batas_waktu' ).val('');
+                                $( '#catatan' ).val('');
+                                $('#modals3').modal('toggle');
+                            })
+                            table.ajax.reload();
+                    }
+                })
+            }
+        })
         $('form[id="formsuratedit"]').validate({
             rules: {
                 no_agendaedit: 'required',
