@@ -24,7 +24,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-      <li class="active treeview">
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-database"></i> <span>Master Data</span>
           <span class="pull-right-container">
@@ -32,7 +32,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Data Klasifikasi</a></li>
+          <li class="{{ Request::segment(1) === 'klasifikasi' ? 'active' : null }}"><a href="{{route('klasifkasi.index')}}"><i class="fa fa-circle-o"></i> Data Klasifikasi</a></li>
         </ul>
       </li>
       <li class="treeview">
