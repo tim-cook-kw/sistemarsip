@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/surat', function (Request $request) {
 });
 Route::resource('suratmasuk','SuratApiController');
 Route::post('suratmasuk/changedisposisi','SuratApiController@disposisi');
+Route::get('suratmasuk/viewdisposisi','SuratApiController@getdisposisi');
