@@ -23,7 +23,7 @@
               <p>Surat Masuk</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-archive"></i>
             </div>
             <a href="{{route('suratmasuk.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -39,7 +39,7 @@
               <p>Surat Keluar</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="fa fa-send"></i>
             </div>
             <a href="{{route('suratkeluar.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
