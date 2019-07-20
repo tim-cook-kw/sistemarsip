@@ -189,7 +189,7 @@
                 </div>
                 </div>
             </div>
-            <table class="table" id="myTable">
+            <table class="table" id="myTable" style="width:100%">
                 <thead>
                     <th>Nomor Agenda</th>
                     <th>Nomor Surat</th>

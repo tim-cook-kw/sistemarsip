@@ -20,6 +20,10 @@ class SuratApiController extends Controller
         return $datasurat;
     }
 
+    public function getdisposisi(){
+        $datadisposisi = DB::table('tbl_disposisi')->get();
+        return $datadisposisi;
+    }
     /**
      * Show the form for creating a new resource.
      * @return Response
@@ -93,7 +97,7 @@ class SuratApiController extends Controller
             $suratObject->indeks = $request->indeks;
             $suratObject->tgl_surat = $request->tgl_surat;
             $suratObject->tgl_diterima = $request->tgl_diterima;
-            $suratObject->file = 'filesurat/';
+            $suratObject->file = 'filesurat/'.$filesurat->getClientOriginalName();
             $suratObject->keterangan = $request->keterangan;
             $suratObject->id_user = '1';
             $path = $request->filesurat->storeAs('filesurat', $filesurat->getClientOriginalName());
