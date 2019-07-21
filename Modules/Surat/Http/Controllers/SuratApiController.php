@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\Surat\Entities\SuratModel;
 use Modules\Surat\Entities\DisposisiModel;
+use Redis;
 class SuratApiController extends Controller
 {
     /**
@@ -16,7 +17,9 @@ class SuratApiController extends Controller
      */
     public function index()
     {
-        $datasurat = DB::table('tbl_surat_masuk')->get();
+        $create_redis = DB::table('tbl_surat_masuk')->get();
+        Redis::set('name', $create_redis);
+        $datasurat=Redis::get('name');
         return $datasurat;
     }
 
