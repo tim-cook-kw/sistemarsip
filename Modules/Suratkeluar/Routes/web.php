@@ -13,4 +13,5 @@
 
 Route::prefix('suratkeluar')->group(function() {
     Route::get('/', 'SuratkeluarController@index')->name('suratkeluar.index');
+    Route::get('download/{id}', 'SuratkeluarApiController@download');
 });

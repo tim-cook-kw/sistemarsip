@@ -172,7 +172,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>File </label>
-                                        <input class="form-control" name="filesurat" id="filesurat" type="file">
+                                        <input class="form-control" name="filesuratedit" id="filesuratedit" type="file">
                                     </div>
                                     <div class="form-group">
                                         <label>Keterangan </label>
@@ -182,7 +182,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i> Submit</button>
+                            <button class="btn btn-primary" type="submit" ><i class="fa fa-send"></i> Submit</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </form>
@@ -200,6 +200,19 @@
                     <th>tgl_diterima</th>
                     <th>File</th>
                     <th>Action</th>
+                </thead>
+            </table>
+            <div class="divider"></div>
+            <br>
+            <br>
+            <h1>Disposisi</h1>
+            <table class="table" id="myTable2" style="width:100%;">
+                <thead>
+                    <th>Asal Surat</th>
+                    <th>Tujuan</th>
+                    <th>Sifat</th>
+                    <th>Batas Waktu</th>
+                    <th>Catatan</th>
                 </thead>
             </table>
        </div>
@@ -276,7 +289,7 @@
                             {
                                 data: null,
                                 render: function ( data, type, row ) {
-                                    return "<button class='btn btn-primary' onclick='editfunc("+data.id_surat+")'>Download</button>";
+                                    return "<a class='btn btn-primary' href='suratmasuk/download/"+data.id_surat+"'>Download</a>";
                                 }
                             },
                             {
@@ -287,8 +300,24 @@
                             }
                         ]
                     });
+                    var table2 =  $('#myTable2').DataTable({
+                        deferRender: true,
+                        ajax: {
+                            url: "/api/tampildisposisi",
+                            type: "GET",
+                            dataSrc: function (d) {
+                                return d
+                            }
+                        },
+                        columns: [
+                            { data: 'asal_surat' },
+                            { data: 'tujuan' },
+                            { data: 'sifat' },
+                            { data: 'batas_waktu' },
+                            { data: 'catatan' }
+                        ]
+                    });
 $('document').ready(function(){
-
         $('form[id="formsuratmasuk"]').validate({
             rules: {
                 no_agenda: 'required',
@@ -404,7 +433,6 @@ $('document').ready(function(){
                 kodeedit: 'required',
                 indeksedit: 'required',
                 tgl_suratedit: 'required',
-                filesuratedit: 'required',
                 tgl_diterimaedit: 'required',
                 tgl_diterimaedit: 'required',
                 keteranganedit: 'required',

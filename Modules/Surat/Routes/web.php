@@ -13,4 +13,5 @@
 
 Route::prefix('suratmasuk')->group(function() {
     Route::get('/', 'SuratController@index')->name('suratmasuk.index');
+    Route::get('download/{id}','SuratApiController@download');
 });

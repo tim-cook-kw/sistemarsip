@@ -88,7 +88,7 @@ class SuratApiController extends Controller
     {
         if ($request->hasFile('filesurat')) {
             $filesurat = $request->file('filesurat');
-            $suratObject = new SuratModel();
+            $suratObject = SuratModel::find($id);
             $suratObject->no_agenda = $request->no_agenda;
             $suratObject->no_surat = $request->no_surat;
             $suratObject->asal_surat = $request->asal_surat;
@@ -102,9 +102,9 @@ class SuratApiController extends Controller
             $suratObject->id_user = '1';
             $path = $request->filesurat->storeAs('filesurat', $filesurat->getClientOriginalName());
             $suratObject->save();
+            return "oke";
         }else{
-            $filesurat = $request->file('filesurat');
-            $suratObject = new SuratModel();
+            $suratObject = SuratModel::find($id);
             $suratObject->no_agenda = $request->no_agenda;
             $suratObject->no_surat = $request->no_surat;
             $suratObject->asal_surat = $request->asal_surat;
@@ -115,6 +115,8 @@ class SuratApiController extends Controller
             $suratObject->tgl_diterima = $request->tgl_diterima;
             $suratObject->keterangan = $request->keterangan;
             $suratObject->id_user = '1';
+            $suratObject->save();
+            return "oce";
         }
     }
 
@@ -140,8 +142,22 @@ class SuratApiController extends Controller
         $diposisiObject->save();
         
     }
-    public function showdisposisi($id){
-        $diposisiObject = DisposisiModel::find($id);
-        return $diposisiObject;
+    public function showdisposisi(){
+        $datadisposisi = DB::table('tbl_disposisi')
+        ->join('tbl_surat_masuk', 'tbl_surat_masuk.id_surat', '=', 'tbl_disposisi.id_surat')
+        ->select('tbl_disposisi.*', 'tbl_surat_masuk.asal_surat')
+        ->get();
+        return $datadisposisi;
+    }
+    public function download($id){
+        $suratObject = SuratModel::find($id);
+         //PDF file is stored under project/public/download/info.pdf
+        $file= public_path(). '/'.$suratObject->file;
+
+        // $headers = array(
+        //         'Content-Type: application/pdf',
+        //         );
+        return response()->download($file);
+        
     }
 }

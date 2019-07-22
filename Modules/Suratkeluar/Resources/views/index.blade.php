@@ -224,7 +224,7 @@
                             {
                                 data: null,
                                 render: function ( data, type, row ) {
-                                    return "<button class='btn btn-primary' onclick='editfunc("+data.id_surat+")'>Download</button>";
+                                    return "<a class='btn btn-primary' href='suratkeluar/download/"+data.id_surat+"'>Download</a>";
                                 }
                             },
                             {

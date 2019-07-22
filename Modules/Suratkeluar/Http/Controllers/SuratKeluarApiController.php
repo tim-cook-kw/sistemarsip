@@ -120,4 +120,15 @@ class SuratKeluarApiController extends Controller
         $suratkeluarObject = SuratKeluarModel::find($id);
         $suratkeluarObject->delete();
     }
+    public function download($id){
+        $suratObject = SuratKeluarModel::find($id);
+         //PDF file is stored under project/public/download/info.pdf
+        $file= public_path(). '/'.$suratObject->file;
+
+        // $headers = array(
+        //         'Content-Type: application/pdf',
+        //         );
+        return response()->download($file);
+        
+    }
 }
