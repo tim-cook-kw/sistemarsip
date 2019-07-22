@@ -25,10 +25,7 @@ class SuratKeluarApiController extends Controller
      */
     public function create()
     {
-        $suratkeluar = DB::table('tbl_surat_keluar')->get();
-        Redis::set('redis_suratkeluar', $suratkeluar);
-        $suratkeluar=Redis::get('redis_suratkeluar');
-        return $redis_suratkeluar;
+        return view('surat::create');
     }
 
     /**

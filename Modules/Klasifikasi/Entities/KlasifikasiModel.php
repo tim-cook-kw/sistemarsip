@@ -9,4 +9,5 @@ class KlasifikasiModel extends Model
     protected $fillable = [];
     protected $table='tbl_klasifikasi';
     protected $primaryKey = 'id_klasifikasi';
+    public $timestamps = false;
 }

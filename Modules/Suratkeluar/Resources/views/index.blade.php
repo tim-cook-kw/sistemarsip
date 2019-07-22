@@ -87,7 +87,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Form Ubah Surat Masuk</h4>
                     </div>
-                    <form id="formsuratedit" method="POST">
+                    <form id="formsuratedit">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6">

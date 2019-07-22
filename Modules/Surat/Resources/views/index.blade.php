@@ -91,7 +91,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Form Input Disposisi</h4>
                     </div>
-                    <form id="formdisposisi">
+                    <form action="#" method="post" id="formdisposisi">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Tujuan</label>
@@ -138,7 +138,7 @@
                                     <div class="form-group">
                                         <label>Nomor Agenda </label>
                                         <input class="form-control" name="no_agendaedit" id="no_agendaedit">
-                                        <input type="hidden" id="idsurat">
+                                        <input type="hidden" id="idsuratedit">
                                     </div>
                                     <div class="form-group">
                                         <label>Nomor Surat </label>
@@ -252,7 +252,7 @@
                     $( '#tgl_suratedit' ).val(data.tgl_surat);
                     $( '#tgl_diterimaedit' ).val(data.tgl_diterima);
                     $( '#keteranganedit' ).val(data.keterangan);
-                    $( '#idsurat' ).val(data.id_surat);
+                    $( '#idsuratedit' ).val(data.id);
                 }
             })
         }
@@ -417,8 +417,8 @@ $('document').ready(function(){
             submitHandler: function(form) {
                 var data;
                 data = new FormData();
-                var id = $('#idsurat').val();
-                data.append('_method', 'PUT');
+                var id = $('#idsuratedit').val();
+                data.append('_method', 'PATCH');
                 data.append( 'no_agenda', $( '#no_agendaedit' ).val());
                 data.append( 'no_surat', $( '#no_suratedit' ).val());
                 data.append( 'asal_surat', $( '#asal_suratedit' ).val());
