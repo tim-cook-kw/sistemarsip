@@ -25,7 +25,7 @@ class SuratKeluarApiController extends Controller
      */
     public function create()
     {
-        return view('suratkeluar::create');
+        return view('surat::create');
     }
 
     /**

@@ -23,7 +23,9 @@ class DiposisiController extends Controller
      */
     public function create()
     {
+        
         return view('diposisi::create');
+
     }
 
     /**

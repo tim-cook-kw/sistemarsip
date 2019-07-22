@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\Surat\Entities\SuratModel;
 use Modules\Surat\Entities\DisposisiModel;
+use Redis;
 class SuratApiController extends Controller
 {
     /**
@@ -40,7 +41,9 @@ class SuratApiController extends Controller
      */
     public function store(Request $request)
     {
+        
         $filesurat = $request->file('filesurat');
+        // dd(SuratModel::get());
         $suratObject = new SuratModel();
         $suratObject->no_agenda = $request->no_agenda;
         $suratObject->no_surat = $request->no_surat;
@@ -50,7 +53,7 @@ class SuratApiController extends Controller
         $suratObject->indeks = $request->indeks;
         $suratObject->tgl_surat = $request->tgl_surat;
         $suratObject->tgl_diterima = $request->tgl_diterima;
-        $suratObject->file = 'filesurat/';
+        $suratObject->file = 'filesurat/'.$filesurat->getClientOriginalName();
         $suratObject->keterangan = $request->keterangan;
         $suratObject->id_user = '1';
         $path = $request->filesurat->storeAs('filesurat', $filesurat->getClientOriginalName());
@@ -102,8 +105,9 @@ class SuratApiController extends Controller
             $suratObject->id_user = '1';
             $path = $request->filesurat->storeAs('filesurat', $filesurat->getClientOriginalName());
             $suratObject->save();
-            return "oke";
+            
         }else{
+            $filesurat = $request->file('filesurat');
             $suratObject = SuratModel::find($id);
             $suratObject->no_agenda = $request->no_agenda;
             $suratObject->no_surat = $request->no_surat;
@@ -116,7 +120,6 @@ class SuratApiController extends Controller
             $suratObject->keterangan = $request->keterangan;
             $suratObject->id_user = '1';
             $suratObject->save();
-            return "oce";
         }
     }
 

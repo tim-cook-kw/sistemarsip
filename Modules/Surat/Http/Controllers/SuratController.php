@@ -5,6 +5,8 @@ namespace Modules\Surat\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redis;
+
 
 class SuratController extends Controller
 {
@@ -23,7 +25,10 @@ class SuratController extends Controller
      */
     public function create()
     {
-        return view('surat::create');
+        $redis_create=DB::table('tbl_surat_masuk')->get();
+        Redis::set('name'.$redis_create);
+        $create_redis=Redis::get('name.$redis_create');
+        return view('surat::create',compact('create_redis'));
     }
 
     /**
