@@ -419,7 +419,7 @@ $('document').ready(function(){
                                 $( '#catatan' ).val('');
                                 $('#modals3').modal('toggle');
                             })
-                            table.ajax.reload();
+                            table2.ajax.reload();
                     }
                 })
             }
