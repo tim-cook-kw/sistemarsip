@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>File </label>
-                                        <input class="form-control" name="filesurat" id="filesurat" type="file">
+                                        <input class="form-control" name="filesuratedit" id="filesuratedit" type="file">
                                     </div>
                                     <div class="form-group">
                                         <label>Keterangan </label>
@@ -307,7 +307,6 @@ $('document').ready(function(){
                 kodeedit: 'required',
                 tgl_catatedit: 'required',
                 tgl_suratedit: 'required',
-                filesuratedit: 'required',
                 tgl_diterimaedit: 'required',
                 tgl_diterimaedit: 'required',
                 keteranganedit: 'required',
