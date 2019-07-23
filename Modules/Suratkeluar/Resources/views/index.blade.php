@@ -141,19 +141,21 @@
                 </div>
                 </div>
             </div>
-            <table class="table" id="myTable">
-                <thead>
-                    <th>Nomor Agenda</th>
-                    <th>Nomor Surat</th>
-                    <th>Asal Surat</th>
-                    <th>Isi</th>
-                    <th>Kode</th>
-                    <th>Tanggal Surat</th>
-                    <th>Tanggal Catat</th>
-                    <th>File</th>
-                    <th>Action</th>
-                </thead>
-            </table>
+            <div class="table-responsive text-nowrap">
+                <table class="table" id="myTable">
+                    <thead>
+                        <th>Nomor Agenda</th>
+                        <th>Nomor Surat</th>
+                        <th>Asal Surat</th>
+                        <th>Isi</th>
+                        <th>Kode</th>
+                        <th>Tanggal Surat</th>
+                        <th>Tanggal Catat</th>
+                        <th>File</th>
+                        <th>Action</th>
+                    </thead>
+                </table>
+            </div>
        </div>
    </div>
 @stop
