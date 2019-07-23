@@ -265,7 +265,7 @@
                     $( '#tgl_suratedit' ).val(data.tgl_surat);
                     $( '#tgl_diterimaedit' ).val(data.tgl_diterima);
                     $( '#keteranganedit' ).val(data.keterangan);
-                    $( '#idsuratedit' ).val(data.id);
+                    $( '#idsuratedit' ).val(data.id_surat);
                 }
             })
         }
@@ -446,7 +446,7 @@ $('document').ready(function(){
                 var data;
                 data = new FormData();
                 var id = $('#idsuratedit').val();
-                data.append('_method', 'PATCH');
+                data.append('_method', 'PUT');
                 data.append( 'no_agenda', $( '#no_agendaedit' ).val());
                 data.append( 'no_surat', $( '#no_suratedit' ).val());
                 data.append( 'asal_surat', $( '#asal_suratedit' ).val());
