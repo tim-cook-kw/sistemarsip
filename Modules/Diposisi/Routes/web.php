@@ -12,5 +12,5 @@
 */
 
 Route::prefix('diposisi')->group(function() {
-    Route::get('/', 'DiposisiController@index');
+    Route::get('/', 'DiposisiController@index')->name('suratmasuk.index');
 });

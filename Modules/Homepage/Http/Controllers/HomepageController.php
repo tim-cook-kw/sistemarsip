@@ -15,10 +15,12 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $jum_suratmasuk=count(DB::table('tbl_surat_masuk')->get());
-        $jum_suratkeluar=count(DB::table('tbl_surat_keluar')->get());
-        $jum_user=count(DB::table('users')->get()); 
-        return view('homepage::index', compact('jum_suratmasuk', 'jum_suratkeluar', 'jum_user'));
+        $jum_suratmasuk     =   count(DB::table('tbl_surat_masuk')->get());
+        $jum_suratkeluar    =   count(DB::table('tbl_surat_keluar')->get());
+        $jum_user           =   count(DB::table('users')->get()); 
+        $jum_disposisi      =   count(DB::table('tbl_disposisi')->get());
+        return view('homepage::index', 
+                compact('jum_suratmasuk', 'jum_suratkeluar', 'jum_user', 'jum_disposisi'));
     }
 
     /**
