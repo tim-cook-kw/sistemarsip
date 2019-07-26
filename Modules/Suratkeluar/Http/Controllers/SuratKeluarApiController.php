@@ -14,7 +14,7 @@ class SuratKeluarApiController extends Controller
      * @return Response
      */
     public function index()
-    {
+    { 
         $datasuratkelluar  = DB::table('tbl_surat_keluar')->get();
         return $datasuratkelluar;
     }
