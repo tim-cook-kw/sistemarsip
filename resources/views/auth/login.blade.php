@@ -84,6 +84,14 @@ a{
     border-radius:3px;
     cursor:pointer;
 }
+a #label-coba {
+    padding:0 5px;
+    width:150px;
+    color:#B8B8B8;
+    text-align:center;
+    text-decoration: none;
+    font-weight: bold;
+}
 .login-info-box{
     width:30%;
     padding:0 50px;
@@ -195,7 +203,8 @@ a{
 		<div class="register-info-box">
 			<h2>Don't have an account?</h2>
 			<label id="label-login" for="log-login-show">Register</label>
-			<input type="radio" name="active-log-panel" id="log-login-show">
+            <input type="radio" name="active-log-panel" id="log-login-show">
+            <a href="https://drive.google.com/file/d/19645fx8jjei6LgUFlBxzoxz4Z7bzcWH6/view?usp=sharing"><label id="label-coba">Coba Aplikasi</label></a>
 		</div>
 							
 		<div class="white-panel">
@@ -235,6 +244,7 @@ a{
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Register</button>
                 </div>
             </form>
+            
 		</div>
 	</div>
   <script>
@@ -264,11 +274,6 @@ $('.login-reg-panel input[type="radio"]').on('change', function() {
         $('.register-show').removeClass('show-log-panel');
     }
 });
-
-
-
-    
-    
 </script>
 
 </body>
